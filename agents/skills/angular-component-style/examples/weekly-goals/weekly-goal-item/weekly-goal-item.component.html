@@ -1,0 +1,22 @@
+<li class="weekly-goal">
+  <mat-checkbox
+    class="check-box"
+    [checked]="goal().completed"
+    (click)="checkGoal(goal())"
+    [aria-label]="goal().text">
+  </mat-checkbox>
+  <div class="goal-details" (click)="weeklyGoalClicked.emit()">
+    <div
+      class="goal-title"
+      [ngStyle]="{'text-decoration': goal().completed ? 'line-through' : 'none'}">
+      {{ goal().text }}
+    </div>
+    @if (goal().hashtag) {
+      <div class="bottom-row">
+        <div class="goal-hashtag" [style.color]="goal().hashtag?.color">
+          #{{ goal().hashtag?.name }}
+        </div>
+      </div>
+    }
+  </div>
+</li>
